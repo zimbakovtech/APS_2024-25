@@ -108,9 +108,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        String[] indeksi = new String[n];
+        String[] indeksi = new String[n]; // cuvame indeksi na site teminja/stringovi
         AdjacencyMatrixGraph<String> graph = new AdjacencyMatrixGraph<>(n);
-
+        
+        // dodavame teminja
         for(int i = 0; i < n; i++) {
             String current = sc.next();
             indeksi[i] = current;
@@ -119,22 +120,29 @@ public class Main {
 
         int m = sc.nextInt();
 
+        // dodavame rebra
         for(int i = 0; i < m; i++) {
             String source = sc.next();
             String destination = sc.next();
             int sourceIndex = 0, destinationIndex = 0;
             for(int j = 0; j < n; j++) {
+                // ako go najdes dadeniot string vo nizata, j-ot e indeksot
                 if(indeksi[j].equals(source))
                     sourceIndex = j;
+                // istoto tuka
                 if(indeksi[j].equals(destination))
                     destinationIndex = j;
             }
+            // namesto stringovite, gi pustame indeksite za da dodademe rebro pomegju tie dve teminja
+            // so sc.nextInt() dodavame tezina na rebroto
             graph.addEdge(sourceIndex, destinationIndex, sc.nextInt());
         }
 
+        // na zavrseniot graf, pustame kruskal koj vrakja lista od rabovi
         List<Edge> rabovi = graph.kruskal();
         int sum = 0;
 
+        // gi pominuvame site rebra od vratenata lista, i gi dodavame tezinite vo sum
         for(Edge e : rabovi)
             sum += e.getWeight();
 
