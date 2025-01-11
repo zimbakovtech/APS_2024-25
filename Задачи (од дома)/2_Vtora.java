@@ -58,7 +58,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         String[] keys = new String[n];
-        Dictionary<String, String> dictionary = new Hashtable<>();
+        Map<String, String> dictionary = new HashMap<>();
         AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
 
         for(int i = 0; i < n; i++) {
