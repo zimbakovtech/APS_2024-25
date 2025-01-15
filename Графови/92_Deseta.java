@@ -120,24 +120,25 @@ public class Main {
         int m = sc.nextInt();
 
         for(int i = 0; i < m; i++) {
-            String source = sc.next();
-            String destination = sc.next();
-            int sourceIndex = 0, destinationIndex = 0;
+            String pocetnoTeme = sc.next();
+            String krajnoTeme = sc.next();
+            int weight = sc.nextInt();
+            int pocetnoTemeIndex = 0, krajnoTemeIndex = 0;
             for(int j = 0; j < n; j++) {
-                if(indeksi[j].equals(source))
-                    sourceIndex = j;
-                if(indeksi[j].equals(destination))
-                    destinationIndex = j;
+                if(indeksi[j].equals(pocetnoTeme))
+                    pocetnoTemeIndex = j;
+                if(indeksi[j].equals(krajnoTeme))
+                    krajnoTemeIndex = j;
             }
-            graph.addEdge(sourceIndex, destinationIndex, sc.nextInt());
+            graph.addEdge(pocetnoTemeIndex, krajnoTemeIndex, weight);
         }
 
-        List<Edge> rabovi = graph.kruskal();
-        int sum = 0;
+        List<Edge> rebra = graph.kruskal();
+        int suma = 0;
 
-        for(Edge e : rabovi)
-            sum += e.getWeight();
+        for(Edge rebro : rebra)
+            suma += rebro.getWeight();
 
-        System.out.println(sum);
+        System.out.println(suma);
     }
 }
