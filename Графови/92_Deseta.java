@@ -120,24 +120,25 @@ public class Main {
         int m = sc.nextInt();
 
         for(int i = 0; i < m; i++) {
-            String pocetnoTeme = sc.next();
-            String krajnoTeme = sc.next();
-            int weight = sc.nextInt();
+            String pocetnoTeme = sc.next(); // Vnesuvame pocetno teme
+            String krajnoTeme = sc.next(); // Vnsuvame krajno teme
+            int weight = sc.nextInt(); // Vnesuvame tezina na rebro megju niv
             int pocetnoTemeIndex = 0, krajnoTemeIndex = 0;
             for(int j = 0; j < n; j++) {
                 if(indeksi[j].equals(pocetnoTeme))
-                    pocetnoTemeIndex = j;
+                    pocetnoTemeIndex = j; // ako go najdes temeto, j-ot e negoviot indeks
                 if(indeksi[j].equals(krajnoTeme))
-                    krajnoTemeIndex = j;
+                    krajnoTemeIndex = j; // ako go najdes temeto, j-ot e negoviot indeks
             }
+            // dodavame rebro:
             graph.addEdge(pocetnoTemeIndex, krajnoTemeIndex, weight);
         }
 
-        List<Edge> rebra = graph.kruskal();
+        List<Edge> rebra = graph.kruskal(); // vrakja niza od rebra
         int suma = 0;
 
-        for(Edge rebro : rebra)
-            suma += rebro.getWeight();
+        for(Edge rebro : rebra) // za sekoe rebro od vratenite rebra
+            suma += rebro.getWeight(); // za sekoe rebro dodadi mu ja tezinata na sumata
 
         System.out.println(suma);
     }
